@@ -2,7 +2,7 @@ class OAuthToken {
   final String accessToken;
   final DateTime accessTokenExpiresAt;
   final String refreshToken;
-  final String refreshTokenExpiresAt;
+  final DateTime refreshTokenExpiresAt;
   final List<String> scopes;
 
   const OAuthToken(this.accessToken, this.accessTokenExpiresAt,
@@ -12,6 +12,6 @@ class OAuthToken {
       json["accessToken"],
       DateTime.parse(json["accessTokenExpiresAt"]),
       json["refreshToken"],
-      json["refreshTokenExpiresAt"],
+      DateTime.tryParse(json["refreshTokenExpiresAt"] ?? ""),
       json["scopes"]);
 }
